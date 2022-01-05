@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  /*background-image: url("https://i.redd.it/o6lintmgye981.jpg");*/
+  background-image: url("https://i.redd.it/o6lintmgye981.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -14,5 +14,20 @@ html, body {
 }
 
 .top-content {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  height: 60%;
+
+  opacity: 0.2;
+
+}
+.bottom-content {
+  display: flex;
+  justify-content: space-between;
+  background-color: red;
+  height: 40%;
+
+  opacity: 0.2;
 
 }
