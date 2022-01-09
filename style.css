@@ -19,18 +19,18 @@ html, body {
   display: flex;
   justify-content: space-between;
   height: 60%;
-  padding: 20px;
+  margin: 50px;
 }
 .upper-left-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
+
 .upper-right-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
+
 
 
 .bottom-content {
@@ -38,11 +38,10 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   height: 40%;
- padding: 20px;
+  margin: 50px;
 }
-.bottom-container {
+.daily-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
