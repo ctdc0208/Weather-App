@@ -1,3 +1,4 @@
+/*
 const nameCountry = document.querySelector('.name_country');
 const dateTime = document.querySelector('.date_time');
 const temp = document.querySelector('.temp');
@@ -18,7 +19,7 @@ async function getWeatherLocation() {
 
   console.log(weatherData);
 */
-
+/*
   const weatherMetric = await fetch('http://api.openweathermap.org/data/2.5/weather?q=Manila&units=metric&APPID=c205a33f23c3e0dd3c6166231519e456');
   const weatherDataMetric = await weatherMetric.json();
 
@@ -51,5 +52,6 @@ async function getWeatherLocation() {
 
 
 }
-
+/*
 getWeatherLocation();
+*/
