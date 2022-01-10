@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://i.redd.it/o6lintmgye981.jpg");
+  background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://i.redd.it/o6lintmgye981.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,14 +10,14 @@ html, body {
   padding: 0;
   color: #f5f5f5;
   font-family: montserrat, sans-serif;
-
+  cursor: default;
 }
 
 .top-content {
   display: flex;
   justify-content: space-between;
   height: 60%;
-  margin: 3rem;
+  margin: 5rem;
 }
 .upper-left-container {
   display: flex;
@@ -79,11 +79,30 @@ cursor: pointer;
   flex-direction: column;
   justify-content: space-between;
   height: 40%;
-  margin: 50px;
+  margin: 5rem;
 }
 .daily-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.daily_0_day, .daily_1_day, .daily_2_day, .daily_3_day, .daily_4_day, .daily_5_day, .daily_6_day
+.daily_0_day, .daily_1_day, .daily_2_day, .daily_3_day, .daily_4_day, .daily_5_day, .daily_6_day {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.daily_0_high_temp, .daily_1_high_temp, .daily_2_high_temp, .daily_3_high_temp, .daily_4_high_temp, .daily_5_high_temp, .daily_6_high_temp {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0rem;
+}
+.daily_0_low_temp, .daily_1_low_temp, .daily_2_low_temp, .daily_3_low_temp, .daily_4_low_temp, .daily_5_low_temp, .daily_6_low_temp {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.daily_0_clouds, .daily_1_clouds, .daily_2_clouds, .daily_3_clouds , .daily_4_clouds , .daily_5_clouds , .daily_6_clouds {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
