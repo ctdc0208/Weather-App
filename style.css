@@ -19,90 +19,121 @@ html, body {
   height: 60%;
   margin: 5rem;
 }
-.upper-left-container {
-  display: flex;
-  flex-direction: column;
-}
-.name_country {
-  font-size: 4rem;
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 0rem;
-  margin-top: 0;
-  padding-top: 0;
-}
-.date_time {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-top: 0;
-  padding-top: 0;
-}
-.clouds {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.cloud-icon{
-}
-.temp {
-  font-size: 6rem;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.2rem;
-}
-.unit {
-  margin-bottom: 2.5rem;
-font-weight: 600;
-font-size: 1.2rem;
-cursor: pointer;
-}
+  .upper-left-container {
+    display: flex;
+    flex-direction: column;
+  }
+    .name_country {
+      font-size: 4rem;
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 0rem;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .date_time {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .clouds {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .cloud-icon{
+    }
+    .temp {
+      font-size: 6rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.2rem;
+    }
+    .unit {
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .search-location-container {
+      margin-top: 1rem;
+      height: 30px;
+      max-width: 200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f5f5f5;
+      padding: 6px 12px;
+    }
+      .search-location-input {
+        height: 100%;
+        flex-shrink: 2;
+        max-width: 150px;
+        background-color: transparent;
+        border: none;
+        color: #f5f5f5;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .search-location-input:focus {
+        outline: none;
+      }
+      .search-location-button {
+        /* need search icon*/
+      }
 
-.upper-right-container {
-  display: flex;
-  flex-direction: column;
-
-}
-.feels_like, .humidity, .wind {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-}
-.humidity {
-}
-.wind {
-}
 
 
-.bottom-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 40%;
-  margin: 5rem;
-}
-.daily-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.daily_0_day, .daily_1_day, .daily_2_day, .daily_3_day, .daily_4_day, .daily_5_day, .daily_6_day {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 2rem;
-}
-.daily_0_high_temp, .daily_1_high_temp, .daily_2_high_temp, .daily_3_high_temp, .daily_4_high_temp, .daily_5_high_temp, .daily_6_high_temp {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 0rem;
-}
-.daily_0_low_temp, .daily_1_low_temp, .daily_2_low_temp, .daily_3_low_temp, .daily_4_low_temp, .daily_5_low_temp, .daily_6_low_temp {
-  font-size: 1rem;
-  font-weight: 400;
-  margin-bottom: 1rem;
-}
-.daily_0_clouds, .daily_1_clouds, .daily_2_clouds, .daily_3_clouds , .daily_4_clouds , .daily_5_clouds , .daily_6_clouds {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
+
+  .upper-right-container {
+    display: flex;
+    flex-direction: column;
+
+  }
+    .feels_like, .humidity, .wind {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+    }
+    .humidity {
+    }
+    .wind {
+    }
+
+
+
+
+  .bottom-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+    margin: 5rem;
+  }
+    .daily-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .daily_0_day, .daily_1_day, .daily_2_day, .daily_3_day, .daily_4_day, .daily_5_day, .daily_6_day {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+    .daily_0_high_temp, .daily_1_high_temp, .daily_2_high_temp, .daily_3_high_temp, .daily_4_high_temp, .daily_5_high_temp, .daily_6_high_temp {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 0rem;
+    }
+    .daily_0_low_temp, .daily_1_low_temp, .daily_2_low_temp, .daily_3_low_temp, .daily_4_low_temp, .daily_5_low_temp, .daily_6_low_temp {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .daily_0_clouds, .daily_1_clouds, .daily_2_clouds, .daily_3_clouds , .daily_4_clouds , .daily_5_clouds , .daily_6_clouds {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
