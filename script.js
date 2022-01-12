@@ -46,7 +46,9 @@ const daily_6_high_temp = document.querySelector('.daily_6_high_temp');
 const daily_6_low_temp = document.querySelector('.daily_6_low_temp');
 const daily_6_clouds = document.querySelector('.daily_6_clouds');
 
+let cityName = 'Manila';
 
+/*
 function getCityName() {
   const input = document.querySelector('.search-location-input');
   const cityName = input.value;
@@ -57,6 +59,20 @@ function getCityName() {
   return '';
 }
 
+async function buildUrlCoordinates(cityName) {
+  const buildFromName = await fetch(urlName);
+  const buildFromNameData = await buildFromName.json();
+
+  const latitude = buildFromNameData.coord.lat;
+  const longitude = buildFromNameData.coord.lon;
+
+  buildUrlDaily(latitude, longitude);
+}
+
+function buildUrlDaily(latitude, longitude) {
+  return `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}=&lon=${longitude}&units=metric&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`;
+}
+*/
 async function getWeatherLocation() {
 /*
   const weather = await fetch('http://api.openweathermap.org/data/2.5/weather?q=Manila&APPID=c205a33f23c3e0dd3c6166231519e456');
@@ -70,10 +86,16 @@ async function getWeatherLocation() {
 
 */
 
+
 // API for Astronomical API (Latitude and Longitude, Time)
-  const weatherAstronomical = await fetch('https://api.ipgeolocation.io/astronomy?apiKey=b501d43a8ae843deb4959fbbd33fc521&location=Manila');
+  const weatherAstronomical = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=c205a33f23c3e0dd3c6166231519e456`);
   const weatherAstronomicalData = await weatherAstronomical.json();
 
+  const latitude = weatherAstronomicalData.coord.lat;
+  const longitude = weatherAstronomicalData.coord.lon;
+
+  const getDate = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=b501d43a8ae843deb4959fbbd33fc521&location=${cityName}`);
+  const getDateDate = await getDate.json();
 
 /*
   const weatherImperial = await fetch('http://api.openweathermap.org/data/2.5/find?q=Manila&units=Imperial&APPID=c205a33f23c3e0dd3c6166231519e456');
@@ -81,15 +103,15 @@ async function getWeatherLocation() {
   console.log(weatherDataImperial);
 */
 
-  const weatherDaily7days = await fetch('http://api.openweathermap.org/data/2.5/onecall?lat=14.5995&lon=120.9842&units=metric&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456');
+  const weatherDaily7days = await fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
   const weatherDataDaily7days = await weatherDaily7days.json();
   console.log(weatherDataDaily7days);
 
   // upper right contents
-  nameCountry.textContent = "Manila";
-  dateTime.textContent = weatherAstronomicalData.date + ' ' + weatherAstronomicalData.current_time;
+  nameCountry.textContent = weatherAstronomicalData.name;
+  dateTime.textContent = getDateDate.date + ' ' + getDateDate.current_time;
   clouds.textContent = weatherDataDaily7days.current.weather[0].description;
-  temp.textContent = weatherDataDaily7days.current.temp;
+  temp.textContent = weatherDataDaily7days.current.temp + ' °C' ;
   // unit
 
   // upper left contents
