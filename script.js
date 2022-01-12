@@ -1,5 +1,6 @@
 // upper right content div's
-const nameCountry = document.querySelector('.name_country');
+const nameLocation = document.querySelector('.name');
+const country = document.querySelector('.country');
 const dateTime = document.querySelector('.date_time');
 const clouds = document.querySelector('.clouds');
 const temp = document.querySelector('.temp');
@@ -108,7 +109,8 @@ async function getWeatherLocation() {
   console.log(weatherDataDaily7days);
 
   // upper right contents
-  nameCountry.textContent = weatherAstronomicalData.name;
+  nameLocation.textContent = weatherAstronomicalData.name;
+  country.textContent = weatherAstronomicalData.sys.country;
   dateTime.textContent = getDateDate.date + ' ' + getDateDate.current_time;
   clouds.textContent = weatherDataDaily7days.current.weather[0].description;
   temp.textContent = weatherDataDaily7days.current.temp + ' °C' ;
