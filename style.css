@@ -89,7 +89,9 @@ html, body {
       .search-location-button {
         /* need search icon*/
       }
-
+    .search-location-error {
+      font-size: 0.8rem;
+    }
 
 
 

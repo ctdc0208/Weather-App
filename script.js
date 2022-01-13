@@ -7,6 +7,7 @@ const temp = document.querySelector('.temp');
 const unit = document.querySelector('.unit');
 const searchBox = document.querySelector('.search-location-input');
 const searchIcon = document.querySelector('.search-location-button');
+const searchError = document.querySelector('.search-location-error');
 
 // upper left content div's
 const feelsLike = document.querySelector('.feels_like');
@@ -100,6 +101,7 @@ async function getWeatherData(initialLoad = false) {
 */
   try {
     let cityName;
+    searchError.style.visibility = "hidden";
     // default weather location on initial load
     if (initialLoad) {
       cityName = 'Manila';
@@ -113,7 +115,7 @@ async function getWeatherData(initialLoad = false) {
       return;
     }
 
-    
+
     lastCity = cityName;
 
 
@@ -188,8 +190,9 @@ async function getWeatherData(initialLoad = false) {
       daily_6_clouds.textContent = weatherDataDaily7days.daily[6].weather[0].description;
 
   } catch (err) {
-    console.log("error cityName");
+    searchError.style.visibility = 'visible';
   }
+  searchBox.value = '';
 };
 
 
