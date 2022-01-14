@@ -199,16 +199,21 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
     document.querySelector('.search-location-error').style.visibility = 'visible';
   }
   document.querySelector('.search-location-input').value = '';
+  return `${unit}`;
 };
 
 
 document.querySelector('.search-location-button').addEventListener('click', () => {
-  getWeatherData();
+  getWeatherData(unit);
 });
 
 document.querySelector('.search-location-input').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
-    getWeatherData();
+    if (unit = "metric") {
+    getWeatherData(unit = "metric", unitTemp = ' °C', unitSpeed = ' km/h');
+  } if (unit = "imperial"){
+    getWeatherData(unit = "imperial", unitTemp = ' °F', unitSpeed = ' mpa');
+    }
   }
 });
 
@@ -219,7 +224,8 @@ document.querySelector('.unit-metric').addEventListener('click', async() => {
   changeUnit = true;
   await getWeatherData(unit, unitTemp, unitSpeed, true);
 
-  console.log("Metric Unit");
+  console.log(unit);
+  return unit;
 });
 
 document.querySelector('.unit-imperial').addEventListener('click', async() => {
@@ -229,7 +235,8 @@ document.querySelector('.unit-imperial').addEventListener('click', async() => {
   changeUnit = true;
   await getWeatherData(unit, unitTemp, unitSpeed,true);
 
-  console.log("Imperial Unit");
+  console.log(unit);
+  return unit;
 });
 
 
