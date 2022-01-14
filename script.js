@@ -52,8 +52,6 @@ const daily_6_low_temp = document.querySelector('.daily_6_low_temp');
 const daily_6_clouds = document.querySelector('.daily_6_clouds');
 */
 
-let lastCity = 'Manila';
-
 function getCityName() {
   const input = document.querySelector('.search-location-input');
   const cityName = input.value;
@@ -63,6 +61,9 @@ function getCityName() {
   }
   return '';
 }
+
+let changeUnit = false;
+let lastCity = 'Manila';
 
 /*
 function getCityName() {
@@ -89,7 +90,7 @@ function buildUrlDaily(latitude, longitude) {
   return `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}=&lon=${longitude}&units=metric&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`;
 }
 */
-async function getWeatherData(initialLoad = false) {
+async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
 /*
   const weather = await fetch('http://api.openweathermap.org/data/2.5/weather?q=Manila&APPID=c205a33f23c3e0dd3c6166231519e456');
   const weatherData = await weather.json();
@@ -117,10 +118,13 @@ async function getWeatherData(initialLoad = false) {
       return;
     }
 
+    if (changeUnit) {
+      cityName = lastCity;
+    };
 
     lastCity = cityName;
 
-
+    changeUnit = false;
 
     // API for Astronomical API (Latitude and Longitude, Time)
       const weatherAstronomical = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=c205a33f23c3e0dd3c6166231519e456`);
@@ -138,7 +142,7 @@ async function getWeatherData(initialLoad = false) {
       console.log(weatherDataImperial);
     */
 
-      const weatherDaily7days = await fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
+      const weatherDaily7days = await fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${unit}&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
       const weatherDataDaily7days = await weatherDaily7days.json();
       console.log(weatherDataDaily7days);
 
@@ -147,48 +151,48 @@ async function getWeatherData(initialLoad = false) {
       document.querySelector('.country').textContent = weatherAstronomicalData.sys.country;
       document.querySelector('.date_time').textContent = getDateDate.date + ' ' + getDateDate.current_time;
       document.querySelector('.clouds').textContent = weatherDataDaily7days.current.weather[0].description;
-      document.querySelector('.temp').textContent = weatherDataDaily7days.current.temp + ' °C' ;
+      document.querySelector('.temp').textContent = weatherDataDaily7days.current.temp + `${unitTemp}` ;
       // unit
 
       // upper left contents
-      document.querySelector('.feels_like').textContent = 'Feels Like : ' + weatherDataDaily7days.current.feels_like + ' °C';
+      document.querySelector('.feels_like').textContent = 'Feels Like : ' + weatherDataDaily7days.current.feels_like + `${unitTemp}`;
       document.querySelector('.humidity').textContent = 'Humidity : ' + weatherDataDaily7days.current.humidity + ' %';
-      document.querySelector('.wind').textContent = 'Wind Speed : ' + weatherDataDaily7days.current.wind_speed + ' km/h';
+      document.querySelector('.wind').textContent = 'Wind Speed : ' + weatherDataDaily7days.current.wind_speed + `${unitSpeed}`;
 
       // bottom contents
       document.querySelector('.daily_0_day').textContent = "0 day";
-      document.querySelector('.daily_0_high_temp').textContent = weatherDataDaily7days.daily[0].temp.max + ' °C';
-      document.querySelector('.daily_0_low_temp').textContent = weatherDataDaily7days.daily[0].temp.min + ' °C';
+      document.querySelector('.daily_0_high_temp').textContent = weatherDataDaily7days.daily[0].temp.max + `${unitTemp}`;
+      document.querySelector('.daily_0_low_temp').textContent = weatherDataDaily7days.daily[0].temp.min + `${unitTemp}`;
       document.querySelector('.daily_0_clouds').textContent = weatherDataDaily7days.daily[0].weather[0].description;
 
       document.querySelector('.daily_1_day').textContent = "1 day";
-      document.querySelector('.daily_1_high_temp').textContent = weatherDataDaily7days.daily[1].temp.max + ' °C';
-      document.querySelector('.daily_1_low_temp').textContent = weatherDataDaily7days.daily[1].temp.min + ' °C';
+      document.querySelector('.daily_1_high_temp').textContent = weatherDataDaily7days.daily[1].temp.max + `${unitTemp}`;
+      document.querySelector('.daily_1_low_temp').textContent = weatherDataDaily7days.daily[1].temp.min + `${unitTemp}`;
       document.querySelector('.daily_1_clouds').textContent = weatherDataDaily7days.daily[1].weather[0].description;
 
       document.querySelector('.daily_2_day').textContent = "2 day";
-      document.querySelector('.daily_2_high_temp').textContent = weatherDataDaily7days.daily[2].temp.max + ' °C';
-      document.querySelector('.daily_2_low_temp').textContent = weatherDataDaily7days.daily[2].temp.min + ' °C';
+      document.querySelector('.daily_2_high_temp').textContent = weatherDataDaily7days.daily[2].temp.max + `${unitTemp}`;
+      document.querySelector('.daily_2_low_temp').textContent = weatherDataDaily7days.daily[2].temp.min + `${unitTemp}`;
       document.querySelector('.daily_2_clouds').textContent = weatherDataDaily7days.daily[2].weather[0].description;
 
       document.querySelector('.daily_3_day').textContent = "3 day";
-      document.querySelector('.daily_3_high_temp').textContent = weatherDataDaily7days.daily[3].temp.max + ' °C';
-      document.querySelector('.daily_3_low_temp').textContent = weatherDataDaily7days.daily[3].temp.min + ' °C';
+      document.querySelector('.daily_3_high_temp').textContent = weatherDataDaily7days.daily[3].temp.max + `${unitTemp}`;
+      document.querySelector('.daily_3_low_temp').textContent = weatherDataDaily7days.daily[3].temp.min + `${unitTemp}`;
       document.querySelector('.daily_3_clouds').textContent = weatherDataDaily7days.daily[3].weather[0].description;
 
       document.querySelector('.daily_4_day').textContent = "4 day";
-      document.querySelector('.daily_4_high_temp').textContent = weatherDataDaily7days.daily[4].temp.max + ' °C';
-      document.querySelector('.daily_4_low_temp').textContent = weatherDataDaily7days.daily[4].temp.min + ' °C';
+      document.querySelector('.daily_4_high_temp').textContent = weatherDataDaily7days.daily[4].temp.max + `${unitTemp}`;
+      document.querySelector('.daily_4_low_temp').textContent = weatherDataDaily7days.daily[4].temp.min + `${unitTemp}`;
       document.querySelector('.daily_4_clouds').textContent = weatherDataDaily7days.daily[4].weather[0].description;
 
       document.querySelector('.daily_5_day').textContent = "5 day";
-      document.querySelector('.daily_5_high_temp').textContent = weatherDataDaily7days.daily[5].temp.max + ' °C';
-      document.querySelector('.daily_5_low_temp').textContent = weatherDataDaily7days.daily[5].temp.min + ' °C';
+      document.querySelector('.daily_5_high_temp').textContent = weatherDataDaily7days.daily[5].temp.max + `${unitTemp}`;
+      document.querySelector('.daily_5_low_temp').textContent = weatherDataDaily7days.daily[5].temp.min + `${unitTemp}`;
       document.querySelector('.daily_5_clouds').textContent = weatherDataDaily7days.daily[5].weather[0].description;
 
       document.querySelector('.daily_6_day').textContent = "6 day";
-      document.querySelector('.daily_6_high_temp').textContent = weatherDataDaily7days.daily[6].temp.max + ' °C';
-      document.querySelector('.daily_6_low_temp').textContent = weatherDataDaily7days.daily[6].temp.min + ' °C';
+      document.querySelector('.daily_6_high_temp').textContent = weatherDataDaily7days.daily[6].temp.max + `${unitTemp}`;
+      document.querySelector('.daily_6_low_temp').textContent = weatherDataDaily7days.daily[6].temp.min + `${unitTemp}`;
       document.querySelector('.daily_6_clouds').textContent = weatherDataDaily7days.daily[6].weather[0].description;
 
   } catch (err) {
@@ -208,4 +212,26 @@ document.querySelector('.search-location-input').addEventListener('keydown', (e)
   }
 });
 
-getWeatherData(true);
+document.querySelector('.unit-metric').addEventListener('click', async() => {
+  unit = 'metric';
+  unitTemp = ' °C';
+  unitSpeed = ' km/h';
+  changeUnit = true;
+  await getWeatherData(unit, unitTemp, unitSpeed, true);
+
+  console.log("Metric Unit");
+});
+
+document.querySelector('.unit-imperial').addEventListener('click', async() => {
+  unit = 'imperial';
+  unitTemp = ' °F';
+  unitSpeed = ' mph';
+  changeUnit = true;
+  await getWeatherData(unit, unitTemp, unitSpeed,true);
+
+  console.log("Imperial Unit");
+});
+
+
+
+getWeatherData(unit = "metric", unitTemp = ' °C', unitSpeed = ' km/h', true);
