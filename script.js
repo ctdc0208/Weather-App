@@ -1,3 +1,4 @@
+/*
 // upper right content div's
 const nameLocation = document.querySelector('.name');
 const country = document.querySelector('.country');
@@ -49,6 +50,7 @@ const daily_6_day = document.querySelector('.daily_6_day');
 const daily_6_high_temp = document.querySelector('.daily_6_high_temp');
 const daily_6_low_temp = document.querySelector('.daily_6_low_temp');
 const daily_6_clouds = document.querySelector('.daily_6_clouds');
+*/
 
 let lastCity = 'Manila';
 
@@ -101,7 +103,7 @@ async function getWeatherData(initialLoad = false) {
 */
   try {
     let cityName;
-    searchError.style.visibility = "hidden";
+    document.querySelector('.search-location-error').style.visibility = "hidden";
     // default weather location on initial load
     if (initialLoad) {
       cityName = 'Manila';
@@ -141,69 +143,69 @@ async function getWeatherData(initialLoad = false) {
       console.log(weatherDataDaily7days);
 
       // upper right contents
-      nameLocation.textContent = weatherAstronomicalData.name;
-      country.textContent = weatherAstronomicalData.sys.country;
-      dateTime.textContent = getDateDate.date + ' ' + getDateDate.current_time;
-      clouds.textContent = weatherDataDaily7days.current.weather[0].description;
-      temp.textContent = weatherDataDaily7days.current.temp + ' °C' ;
+      document.querySelector('.name').textContent = weatherAstronomicalData.name;
+      document.querySelector('.country').textContent = weatherAstronomicalData.sys.country;
+      document.querySelector('.date_time').textContent = getDateDate.date + ' ' + getDateDate.current_time;
+      document.querySelector('.clouds').textContent = weatherDataDaily7days.current.weather[0].description;
+      document.querySelector('.temp').textContent = weatherDataDaily7days.current.temp + ' °C' ;
       // unit
 
       // upper left contents
-      feelsLike.textContent = 'Feels Like : ' + weatherDataDaily7days.current.feels_like + ' °C';
-      humidity.textContent = 'Humidity : ' + weatherDataDaily7days.current.humidity + ' %';
-      wind.textContent = 'Wind Speed : ' + weatherDataDaily7days.current.wind_speed + ' km/h';
+      document.querySelector('.feels_like').textContent = 'Feels Like : ' + weatherDataDaily7days.current.feels_like + ' °C';
+      document.querySelector('.humidity').textContent = 'Humidity : ' + weatherDataDaily7days.current.humidity + ' %';
+      document.querySelector('.wind').textContent = 'Wind Speed : ' + weatherDataDaily7days.current.wind_speed + ' km/h';
 
       // bottom contents
-      daily_0_day.textContent = "0 day";
-      daily_0_high_temp.textContent = weatherDataDaily7days.daily[0].temp.max + ' °C';
-      daily_0_low_temp.textContent = weatherDataDaily7days.daily[0].temp.min + ' °C';
-      daily_0_clouds.textContent = weatherDataDaily7days.daily[0].weather[0].description;
+      document.querySelector('.daily_0_day').textContent = "0 day";
+      document.querySelector('.daily_0_high_temp').textContent = weatherDataDaily7days.daily[0].temp.max + ' °C';
+      document.querySelector('.daily_0_low_temp').textContent = weatherDataDaily7days.daily[0].temp.min + ' °C';
+      document.querySelector('.daily_0_clouds').textContent = weatherDataDaily7days.daily[0].weather[0].description;
 
-      daily_1_day.textContent = "1 day";
-      daily_1_high_temp.textContent = weatherDataDaily7days.daily[1].temp.max + ' °C';
-      daily_1_low_temp.textContent = weatherDataDaily7days.daily[1].temp.min + ' °C';
-      daily_1_clouds.textContent = weatherDataDaily7days.daily[1].weather[0].description;
+      document.querySelector('.daily_1_day').textContent = "1 day";
+      document.querySelector('.daily_1_high_temp').textContent = weatherDataDaily7days.daily[1].temp.max + ' °C';
+      document.querySelector('.daily_1_low_temp').textContent = weatherDataDaily7days.daily[1].temp.min + ' °C';
+      document.querySelector('.daily_1_clouds').textContent = weatherDataDaily7days.daily[1].weather[0].description;
 
-      daily_2_day.textContent = "2 day";
-      daily_2_high_temp.textContent = weatherDataDaily7days.daily[2].temp.max + ' °C';
-      daily_2_low_temp.textContent = weatherDataDaily7days.daily[2].temp.min + ' °C';
-      daily_2_clouds.textContent = weatherDataDaily7days.daily[2].weather[0].description;
+      document.querySelector('.daily_2_day').textContent = "2 day";
+      document.querySelector('.daily_2_high_temp').textContent = weatherDataDaily7days.daily[2].temp.max + ' °C';
+      document.querySelector('.daily_2_low_temp').textContent = weatherDataDaily7days.daily[2].temp.min + ' °C';
+      document.querySelector('.daily_2_clouds').textContent = weatherDataDaily7days.daily[2].weather[0].description;
 
-      daily_3_day.textContent = "3 day";
-      daily_3_high_temp.textContent = weatherDataDaily7days.daily[3].temp.max + ' °C';
-      daily_3_low_temp.textContent = weatherDataDaily7days.daily[3].temp.min + ' °C';
-      daily_3_clouds.textContent = weatherDataDaily7days.daily[3].weather[0].description;
+      document.querySelector('.daily_3_day').textContent = "3 day";
+      document.querySelector('.daily_3_high_temp').textContent = weatherDataDaily7days.daily[3].temp.max + ' °C';
+      document.querySelector('.daily_3_low_temp').textContent = weatherDataDaily7days.daily[3].temp.min + ' °C';
+      document.querySelector('.daily_3_clouds').textContent = weatherDataDaily7days.daily[3].weather[0].description;
 
-      daily_4_day.textContent = "4 day";
-      daily_4_high_temp.textContent = weatherDataDaily7days.daily[4].temp.max + ' °C';
-      daily_4_low_temp.textContent = weatherDataDaily7days.daily[4].temp.min + ' °C';
-      daily_4_clouds.textContent = weatherDataDaily7days.daily[4].weather[0].description;
+      document.querySelector('.daily_4_day').textContent = "4 day";
+      document.querySelector('.daily_4_high_temp').textContent = weatherDataDaily7days.daily[4].temp.max + ' °C';
+      document.querySelector('.daily_4_low_temp').textContent = weatherDataDaily7days.daily[4].temp.min + ' °C';
+      document.querySelector('.daily_4_clouds').textContent = weatherDataDaily7days.daily[4].weather[0].description;
 
-      daily_5_day.textContent = "5 day";
-      daily_5_high_temp.textContent = weatherDataDaily7days.daily[5].temp.max + ' °C';
-      daily_5_low_temp.textContent = weatherDataDaily7days.daily[5].temp.min + ' °C';
-      daily_5_clouds.textContent = weatherDataDaily7days.daily[5].weather[0].description;
+      document.querySelector('.daily_5_day').textContent = "5 day";
+      document.querySelector('.daily_5_high_temp').textContent = weatherDataDaily7days.daily[5].temp.max + ' °C';
+      document.querySelector('.daily_5_low_temp').textContent = weatherDataDaily7days.daily[5].temp.min + ' °C';
+      document.querySelector('.daily_5_clouds').textContent = weatherDataDaily7days.daily[5].weather[0].description;
 
-      daily_6_day.textContent = "6 day";
-      daily_6_high_temp.textContent = weatherDataDaily7days.daily[6].temp.max + ' °C';
-      daily_6_low_temp.textContent = weatherDataDaily7days.daily[6].temp.min + ' °C';
-      daily_6_clouds.textContent = weatherDataDaily7days.daily[6].weather[0].description;
+      document.querySelector('.daily_6_day').textContent = "6 day";
+      document.querySelector('.daily_6_high_temp').textContent = weatherDataDaily7days.daily[6].temp.max + ' °C';
+      document.querySelector('.daily_6_low_temp').textContent = weatherDataDaily7days.daily[6].temp.min + ' °C';
+      document.querySelector('.daily_6_clouds').textContent = weatherDataDaily7days.daily[6].weather[0].description;
 
   } catch (err) {
-    searchError.style.visibility = 'visible';
+    document.querySelector('.search-location-error').style.visibility = 'visible';
   }
-  searchBox.value = '';
+  document.querySelector('.search-location-input').value = '';
 };
 
 
-searchIcon.addEventListener('click', () => {
+document.querySelector('.search-location-button').addEventListener('click', () => {
   getWeatherData();
 });
 
-searchBox.addEventListener('keydown', (e) => {
+document.querySelector('.search-location-input').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     getWeatherData();
   }
 });
 
-getWeatherData();
+getWeatherData(true);
