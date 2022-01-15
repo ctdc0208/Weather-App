@@ -1,57 +1,5 @@
-/*
-// upper right content div's
-const nameLocation = document.querySelector('.name');
-const country = document.querySelector('.country');
-const dateTime = document.querySelector('.date_time');
-const clouds = document.querySelector('.clouds');
-const temp = document.querySelector('.temp');
-const unit = document.querySelector('.unit');
-const searchBox = document.querySelector('.search-location-input');
-const searchIcon = document.querySelector('.search-location-button');
-const searchError = document.querySelector('.search-location-error');
 
-// upper left content div's
-const feelsLike = document.querySelector('.feels_like');
-const humidity = document.querySelector('.humidity');
-const wind = document.querySelector('.wind');
-
-// bottom content div's
-const daily_0_day = document.querySelector('.daily_0_day');
-const daily_0_high_temp = document.querySelector('.daily_0_high_temp');
-const daily_0_low_temp = document.querySelector('.daily_0_low_temp');
-const daily_0_clouds = document.querySelector('.daily_0_clouds');
-
-const daily_1_day = document.querySelector('.daily_1_day');
-const daily_1_high_temp = document.querySelector('.daily_1_high_temp');
-const daily_1_low_temp = document.querySelector('.daily_1_low_temp');
-const daily_1_clouds = document.querySelector('.daily_1_clouds');
-
-const daily_2_day = document.querySelector('.daily_2_day');
-const daily_2_high_temp = document.querySelector('.daily_2_high_temp');
-const daily_2_low_temp = document.querySelector('.daily_2_low_temp');
-const daily_2_clouds = document.querySelector('.daily_2_clouds');
-
-const daily_3_day = document.querySelector('.daily_3_day');
-const daily_3_high_temp = document.querySelector('.daily_3_high_temp');
-const daily_3_low_temp = document.querySelector('.daily_3_low_temp');
-const daily_3_clouds = document.querySelector('.daily_3_clouds');
-
-const daily_4_day = document.querySelector('.daily_4_day');
-const daily_4_high_temp = document.querySelector('.daily_4_high_temp');
-const daily_4_low_temp = document.querySelector('.daily_4_low_temp');
-const daily_4_clouds = document.querySelector('.daily_4_clouds');
-
-const daily_5_day = document.querySelector('.daily_5_day');
-const daily_5_high_temp = document.querySelector('.daily_5_high_temp');
-const daily_5_low_temp = document.querySelector('.daily_5_low_temp');
-const daily_5_clouds = document.querySelector('.daily_5_clouds');
-
-const daily_6_day = document.querySelector('.daily_6_day');
-const daily_6_high_temp = document.querySelector('.daily_6_high_temp');
-const daily_6_low_temp = document.querySelector('.daily_6_low_temp');
-const daily_6_clouds = document.querySelector('.daily_6_clouds');
-*/
-
+// get cityName by a search input
 function getCityName() {
   const input = document.querySelector('.search-location-input');
   const cityName = input.value;
@@ -65,43 +13,8 @@ function getCityName() {
 let changeUnit = false;
 let lastCity = 'Manila';
 
-/*
-function getCityName() {
-  const input = document.querySelector('.search-location-input');
-  const cityName = input.value;
-
-  if (cityName) {
-    return cityName;
-  }
-  return '';
-}
-
-async function buildUrlCoordinates(cityName) {
-  const buildFromName = await fetch(urlName);
-  const buildFromNameData = await buildFromName.json();
-
-  const latitude = buildFromNameData.coord.lat;
-  const longitude = buildFromNameData.coord.lon;
-
-  buildUrlDaily(latitude, longitude);
-}
-
-function buildUrlDaily(latitude, longitude) {
-  return `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}=&lon=${longitude}&units=metric&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`;
-}
-*/
 async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
-/*
-  const weather = await fetch('http://api.openweathermap.org/data/2.5/weather?q=Manila&APPID=c205a33f23c3e0dd3c6166231519e456');
-  const weatherData = await weather.json();
-  temp.textContent = weatherData.main.temp;
 
-  console.log(weatherData);
-
-  const weatherMetric = await fetch('http://api.openweathermap.org/data/2.5/weather?q=Manila&units=metric&APPID=c205a33f23c3e0dd3c6166231519e456');
-  const weatherDataMetric = await weatherMetric.json();
-
-*/
   try {
     let cityName;
     document.querySelector('.search-location-error').style.visibility = "hidden";
@@ -135,12 +48,6 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
 
       const getDate = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=b501d43a8ae843deb4959fbbd33fc521&location=${cityName}`);
       const getDateDate = await getDate.json();
-
-    /*
-      const weatherImperial = await fetch('http://api.openweathermap.org/data/2.5/find?q=Manila&units=Imperial&APPID=c205a33f23c3e0dd3c6166231519e456');
-      const weatherDataImperial = await weatherImperial.json();
-      console.log(weatherDataImperial);
-    */
 
       const weatherDaily7days = await fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${unit}&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
       const weatherDataDaily7days = await weatherDaily7days.json();
@@ -204,11 +111,13 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
 
 
 document.querySelector('.search-location-button').addEventListener('click', () => {
+  changeUnit = false;
   getWeatherData(unit);
 });
 
 document.querySelector('.search-location-input').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
+    changeUnit = false;
     if (unit = "metric") {
     getWeatherData(unit = "metric", unitTemp = ' °C', unitSpeed = ' km/h');
   } if (unit = "imperial"){
