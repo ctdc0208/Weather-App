@@ -42,13 +42,13 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
     // API for Astronomical API (Latitude and Longitude, Time)
       const weatherAstronomical = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=c205a33f23c3e0dd3c6166231519e456`);
       const weatherAstronomicalData = await weatherAstronomical.json();
-
+    // get lat and lon for daily API
       const latitude = weatherAstronomicalData.coord.lat;
       const longitude = weatherAstronomicalData.coord.lon;
-
+    // for date
       const getDate = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=b501d43a8ae843deb4959fbbd33fc521&location=${cityName}`);
       const getDateDate = await getDate.json();
-
+    // one call daily weather data
       const weatherDaily7days = await fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${unit}&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
       const weatherDataDaily7days = await weatherDaily7days.json();
       console.log(weatherDataDaily7days);
@@ -58,8 +58,7 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
       document.querySelector('.country').textContent = weatherAstronomicalData.sys.country;
       document.querySelector('.date_time').textContent = getDateDate.date + ' ' + getDateDate.current_time;
       document.querySelector('.clouds').textContent = weatherDataDaily7days.current.weather[0].description;
-      document.querySelector('.temp').textContent = weatherDataDaily7days.current.temp + `${unitTemp}` ;
-      // unit
+      document.querySelector('.temp').textContent = weatherDataDaily7days.current.temp + `${unitTemp}`;
 
       // upper left contents
       document.querySelector('.feels_like').textContent = 'Feels Like : ' + weatherDataDaily7days.current.feels_like + `${unitTemp}`;
@@ -103,18 +102,22 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
       document.querySelector('.daily_6_clouds').textContent = weatherDataDaily7days.daily[6].weather[0].description;
 
   } catch (err) {
+    // error searching location message
     document.querySelector('.search-location-error').style.visibility = 'visible';
   }
+  // clear search box input
   document.querySelector('.search-location-input').value = '';
+  //  return unit for new location data
   return `${unit}`;
 };
 
-
+// for search location button
 document.querySelector('.search-location-button').addEventListener('click', () => {
   changeUnit = false;
   getWeatherData(unit);
 });
 
+// for search location input and "enter" for submission
 document.querySelector('.search-location-input').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     changeUnit = false;
@@ -126,6 +129,7 @@ document.querySelector('.search-location-input').addEventListener('keydown', (e)
   }
 });
 
+// metric change button
 document.querySelector('.unit-metric').addEventListener('click', async() => {
   unit = 'metric';
   unitTemp = ' °C';
@@ -137,6 +141,7 @@ document.querySelector('.unit-metric').addEventListener('click', async() => {
   return unit;
 });
 
+// imperial change button
 document.querySelector('.unit-imperial').addEventListener('click', async() => {
   unit = 'imperial';
   unitTemp = ' °F';
@@ -149,5 +154,5 @@ document.querySelector('.unit-imperial').addEventListener('click', async() => {
 });
 
 
-
+// initialLoad
 getWeatherData(unit = "metric", unitTemp = ' °C', unitSpeed = ' km/h', true);
