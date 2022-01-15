@@ -40,7 +40,7 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
     changeUnit = false;
 
     // API for Astronomical API (Latitude and Longitude, Time)
-      const weatherAstronomical = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=c205a33f23c3e0dd3c6166231519e456`);
+      const weatherAstronomical = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=c205a33f23c3e0dd3c6166231519e456`);
       const weatherAstronomicalData = await weatherAstronomical.json();
     // get lat and lon for daily API
       const latitude = weatherAstronomicalData.coord.lat;
@@ -49,7 +49,7 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
       const getDate = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=b501d43a8ae843deb4959fbbd33fc521&location=${cityName}`);
       const getDateDate = await getDate.json();
     // one call daily weather data
-      const weatherDaily7days = await fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${unit}&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
+      const weatherDaily7days = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${unit}&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
       const weatherDataDaily7days = await weatherDaily7days.json();
       console.log(weatherDataDaily7days);
 
