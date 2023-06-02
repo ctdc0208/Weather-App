@@ -10,79 +10,86 @@
 
 <body>
 
-    <div class='top-content'>
-        <div class="upper-left-container">
-            <div class="name_country">
-                <div class="name"></div>
-                <div class="country"></div>
-            </div>
-            <div class="date"></div>
-            <div class="day"></div>
-            <div class="time"></div>
-            <div class="clouds"></div>
-            <div class="cloud-icon" id="icon"><img id="current-cloud" src="" alt="Weather icon"></div>
-            <div class="temp"></div>
-            <div class="unit">
-                <div class="unit-metric">
-                    °C
+    <div class="max-width">
+        <div class='top-content'>
+            <div class="upper-left-container">
+                <div class="name_country">
+                    <div class="name"></div>
+                    <div class="country"></div>
                 </div>
-                <div class="">|</div>
-                <div class="unit-imperial">
-                    °F
+                <div class="date"></div>
+                <div class="day"></div>
+                <div class="time"></div>
+                <div class="clouds"></div>
+                <div class="cloud-icon"><img id="current-cloud" src="" alt="Weather icon"></div>
+                <div class="temp"></div>
+                <div class="unit">
+                    <div class="unit-metric">
+                        °C
+                    </div>
+                    <div class="">|</div>
+                    <div class="unit-imperial">
+                        °F
+                    </div>
+                </div>
+                <div class="search-location-container">
+                    <input type="text" class="search-location-input" placeholder="Search Location..."></input>
+                    <button title="search" type="button" class="search-location-button"></button>
+                </div>
+                <div class="search-location-error">
+                    <p1>
+                        Location not found. Search must be in the form of "City", "City, State" or "City, Country".
+                    </p1>
+                    <p2>
+                        Or try disabling ad block.
+                    </p2>
                 </div>
             </div>
-            <div class="search-location-container">
-                <input type="text" class="search-location-input" placeholder="Search Location..."></input>
-                <div class="search-location-button"></div>
-            </div>
-            <div class="search-location-error">
-                Location not found. Search must be in the form of "City", "City, State" or "City, Country".
+            <div class="upper-right-container">
+                <div class="feels_like"></div>
+                <div class="humidity"></div>
+                <div class="wind"></div>
             </div>
         </div>
-        <div class="upper-right-container">
-            <div class="feels_like"></div>
-            <div class="humidity"></div>
-            <div class="wind"></div>
-        </div>
-    </div>
 
-    <div class="bottom-content">
-        <div class="daily-container">
-            <div class="daily_1">
-                <div class="daily_1_day"></div>
-                <div class="daily_1_high_temp"></div>
-                <div class="daily_1_low_temp"></div>
-                <div class="daily_1_clouds" id="icon"><img id="daily_1_clouds" src="" alt="Weather icon"></div>
-            </div>
-            <div class="daily_2">
-                <div class="daily_2_day"></div>
-                <div class="daily_2_high_temp"></div>
-                <div class="daily_2_low_temp"></div>
-                <div class="daily_2_clouds" id="icon"><img id="daily_2_clouds" src="" alt="Weather icon"></div>
-            </div>
-            <div class="daily_3">
-                <div class="daily_3_day"></div>
-                <div class="daily_3_high_temp"></div>
-                <div class="daily_3_low_temp"></div>
-                <div class="daily_3_clouds" id="icon"><img id="daily_3_clouds" src="" alt="Weather icon"></div>
-            </div>
-            <div class="daily_4">
-                <div class="daily_4_day"></div>
-                <div class="daily_4_high_temp"></div>
-                <div class="daily_4_low_temp"></div>
-                <div class="daily_4_clouds" id="icon"><img id="daily_4_clouds" src="" alt="Weather icon"></div>
-            </div>
-            <div class="daily_5">
-                <div class="daily_5_day"></div>
-                <div class="daily_5_high_temp"></div>
-                <div class="daily_5_low_temp"></div>
-                <div class="daily_5_clouds" id="icon"><img id="daily_5_clouds" src="" alt="Weather icon"></div>
-            </div>
-            <div class="daily_6">
-                <div class="daily_6_day"></div>
-                <div class="daily_6_high_temp"></div>
-                <div class="daily_6_low_temp"></div>
-                <div class="daily_6_clouds" id="icon"><img id="daily_6_clouds" src="" alt="Weather icon"></div>
+        <div class="bottom-content">
+            <div class="daily-container">
+                <div class="daily_1">
+                    <div class="daily_1_day"></div>
+                    <div class="daily_1_high_temp"></div>
+                    <div class="daily_1_low_temp"></div>
+                    <div class="daily_1_clouds"><img id="daily_1_clouds" src="" alt="Weather icon"></div>
+                </div>
+                <div class="daily_2">
+                    <div class="daily_2_day"></div>
+                    <div class="daily_2_high_temp"></div>
+                    <div class="daily_2_low_temp"></div>
+                    <div class="daily_2_clouds"><img id="daily_2_clouds" src="" alt="Weather icon"></div>
+                </div>
+                <div class="daily_3">
+                    <div class="daily_3_day"></div>
+                    <div class="daily_3_high_temp"></div>
+                    <div class="daily_3_low_temp"></div>
+                    <div class="daily_3_clouds"><img id="daily_3_clouds" src="" alt="Weather icon"></div>
+                </div>
+                <div class="daily_4">
+                    <div class="daily_4_day"></div>
+                    <div class="daily_4_high_temp"></div>
+                    <div class="daily_4_low_temp"></div>
+                    <div class="daily_4_clouds"><img id="daily_4_clouds" src="" alt="Weather icon"></div>
+                </div>
+                <div class="daily_5">
+                    <div class="daily_5_day"></div>
+                    <div class="daily_5_high_temp"></div>
+                    <div class="daily_5_low_temp"></div>
+                    <div class="daily_5_clouds"><img id="daily_5_clouds" src="" alt="Weather icon"></div>
+                </div>
+                <div class="daily_6">
+                    <div class="daily_6_day"></div>
+                    <div class="daily_6_high_temp"></div>
+                    <div class="daily_6_low_temp"></div>
+                    <div class="daily_6_clouds"><img id="daily_6_clouds" src="" alt="Weather icon"></div>
+                </div>
             </div>
         </div>
     </div>

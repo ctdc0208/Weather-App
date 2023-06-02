@@ -57,10 +57,7 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
         const iconCode = weatherDataDaily7days.daily[i].weather[0].icon;
         const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
         iconUrlArray.push(iconUrl);
-        console.log(iconUrl);
       }
-      
-      console.log(iconUrlArray);
 
 
       const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
