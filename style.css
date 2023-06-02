@@ -135,6 +135,9 @@ button:active {
 
 .search-location-error {
     font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: .25rem;
 }
 
 .upper-right-container {
@@ -154,7 +157,7 @@ button:active {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 5rem;
+    margin: 3rem;
 }
 
 .daily-container {
