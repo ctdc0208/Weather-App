@@ -45,18 +45,34 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
     // get lat and lon for daily API
       const latitude = weatherAstronomicalData.coord.lat;
       const longitude = weatherAstronomicalData.coord.lon;
-    // for date
-      const getDate = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=b501d43a8ae843deb4959fbbd33fc521&location=${cityName}`);
-      const getDateDate = await getDate.json();
+  
     // one call daily weather data
       const weatherDaily7days = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${unit}&exclude=hourly,minutely&APPID=c205a33f23c3e0dd3c6166231519e456`);
       const weatherDataDaily7days = await weatherDaily7days.json();
-      console.log(weatherDataDaily7days);
+      console.log(weatherDataDaily7days)
+
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const dayNamesArray = [];
+
+      for (let i = 0; i < 7; i++) {
+        const day = new Date(weatherDataDaily7days.daily[i].dt * 1000);
+        const dayOfWeek = day.getDay();
+        const dayName = dayNames[dayOfWeek];
+        dayNamesArray.push(dayName);
+      }
+
+      const date = new Date(weatherDataDaily7days.current.dt * 1000);
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      
+      const currentDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+      const currentTime = date.toLocaleTimeString();
 
       // upper right contents
       document.querySelector('.name').textContent = weatherAstronomicalData.name;
       document.querySelector('.country').textContent = weatherAstronomicalData.sys.country;
-      document.querySelector('.date_time').textContent = getDateDate.date + ' ' + getDateDate.current_time;
+      document.querySelector('.date').textContent = currentDate;
+      document.querySelector('.day').textContent = dayNamesArray[0];
+      document.querySelector('.time').textContent = currentTime;
       document.querySelector('.clouds').textContent = weatherDataDaily7days.current.weather[0].description;
       document.querySelector('.temp').textContent = weatherDataDaily7days.current.temp + `${unitTemp}`;
 
@@ -66,37 +82,32 @@ async function getWeatherData(unit, unitTemp, unitSpeed, initialLoad = false) {
       document.querySelector('.wind').textContent = 'Wind Speed : ' + weatherDataDaily7days.current.wind_speed + `${unitSpeed}`;
 
       // bottom contents
-      document.querySelector('.daily_0_day').textContent = "0 day";
-      document.querySelector('.daily_0_high_temp').textContent = weatherDataDaily7days.daily[0].temp.max + `${unitTemp}`;
-      document.querySelector('.daily_0_low_temp').textContent = weatherDataDaily7days.daily[0].temp.min + `${unitTemp}`;
-      document.querySelector('.daily_0_clouds').textContent = weatherDataDaily7days.daily[0].weather[0].description;
-
-      document.querySelector('.daily_1_day').textContent = "1 day";
+      document.querySelector('.daily_1_day').textContent = dayNamesArray[1];
       document.querySelector('.daily_1_high_temp').textContent = weatherDataDaily7days.daily[1].temp.max + `${unitTemp}`;
       document.querySelector('.daily_1_low_temp').textContent = weatherDataDaily7days.daily[1].temp.min + `${unitTemp}`;
       document.querySelector('.daily_1_clouds').textContent = weatherDataDaily7days.daily[1].weather[0].description;
 
-      document.querySelector('.daily_2_day').textContent = "2 day";
+      document.querySelector('.daily_2_day').textContent = dayNamesArray[2];
       document.querySelector('.daily_2_high_temp').textContent = weatherDataDaily7days.daily[2].temp.max + `${unitTemp}`;
       document.querySelector('.daily_2_low_temp').textContent = weatherDataDaily7days.daily[2].temp.min + `${unitTemp}`;
       document.querySelector('.daily_2_clouds').textContent = weatherDataDaily7days.daily[2].weather[0].description;
 
-      document.querySelector('.daily_3_day').textContent = "3 day";
+      document.querySelector('.daily_3_day').textContent = dayNamesArray[3];
       document.querySelector('.daily_3_high_temp').textContent = weatherDataDaily7days.daily[3].temp.max + `${unitTemp}`;
       document.querySelector('.daily_3_low_temp').textContent = weatherDataDaily7days.daily[3].temp.min + `${unitTemp}`;
       document.querySelector('.daily_3_clouds').textContent = weatherDataDaily7days.daily[3].weather[0].description;
 
-      document.querySelector('.daily_4_day').textContent = "4 day";
+      document.querySelector('.daily_4_day').textContent = dayNamesArray[4];
       document.querySelector('.daily_4_high_temp').textContent = weatherDataDaily7days.daily[4].temp.max + `${unitTemp}`;
       document.querySelector('.daily_4_low_temp').textContent = weatherDataDaily7days.daily[4].temp.min + `${unitTemp}`;
       document.querySelector('.daily_4_clouds').textContent = weatherDataDaily7days.daily[4].weather[0].description;
 
-      document.querySelector('.daily_5_day').textContent = "5 day";
+      document.querySelector('.daily_5_day').textContent = dayNamesArray[5];
       document.querySelector('.daily_5_high_temp').textContent = weatherDataDaily7days.daily[5].temp.max + `${unitTemp}`;
       document.querySelector('.daily_5_low_temp').textContent = weatherDataDaily7days.daily[5].temp.min + `${unitTemp}`;
       document.querySelector('.daily_5_clouds').textContent = weatherDataDaily7days.daily[5].weather[0].description;
 
-      document.querySelector('.daily_6_day').textContent = "6 day";
+      document.querySelector('.daily_6_day').textContent = dayNamesArray[6];
       document.querySelector('.daily_6_high_temp').textContent = weatherDataDaily7days.daily[6].temp.max + `${unitTemp}`;
       document.querySelector('.daily_6_low_temp').textContent = weatherDataDaily7days.daily[6].temp.min + `${unitTemp}`;
       document.querySelector('.daily_6_clouds').textContent = weatherDataDaily7days.daily[6].weather[0].description;
@@ -137,7 +148,6 @@ document.querySelector('.unit-metric').addEventListener('click', async() => {
   changeUnit = true;
   await getWeatherData(unit, unitTemp, unitSpeed, true);
 
-  console.log(unit);
   return unit;
 });
 
@@ -149,7 +159,6 @@ document.querySelector('.unit-imperial').addEventListener('click', async() => {
   changeUnit = true;
   await getWeatherData(unit, unitTemp, unitSpeed,true);
 
-  console.log(unit);
   return unit;
 });
 
