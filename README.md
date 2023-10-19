@@ -5,4 +5,4 @@ Use everything that have been discuss to create a weather forecast site using th
 
 
 Live Preview:
-https://nexus0208.github.io/Weather-App/
+https://ctdc0208.github.io/Weather-App/
